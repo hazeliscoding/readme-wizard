@@ -10,9 +10,10 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { AppComponent } from './app.component';
 import { MdPreviewComponent } from './components/md-preview/md-preview.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 @NgModule({
-  declarations: [AppComponent, MdPreviewComponent],
+  declarations: [AppComponent, MdPreviewComponent, BackgroundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
