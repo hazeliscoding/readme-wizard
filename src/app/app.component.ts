@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectEditorDescription } from './store/selectors/editor.selectors';
+import { Actions } from './store/actions/action-types';
+import { AppState } from './store/state.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'readme-wizard';
+  public description$: Observable<string>;
 
-  ngOnInit() {
-    console.log('App Component initialized');
+  constructor(private store: Store) {
+    this.description$ = this.store.select(selectEditorDescription);
+  }
+
+  ngOnInit() {}
+
+  addDescription() {
+    this.store.dispatch(
+      Actions.addDescription({ description: 'testing ngrx' })
+    );
   }
 }
