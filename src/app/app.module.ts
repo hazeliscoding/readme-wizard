@@ -12,14 +12,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MdPreviewComponent } from './components/md-preview/md-preview.component';
 import { BackgroundComponent } from './components/background/background.component';
-import { TechPickerComponent } from './components/tech-picker/tech-picker.component';
+import { MultiPickerComponent } from './components/multi-picker/multi-picker.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MdPreviewComponent,
     BackgroundComponent,
-    TechPickerComponent,
+    MultiPickerComponent,
   ],
   imports: [
     BrowserModule,
