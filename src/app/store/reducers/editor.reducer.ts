@@ -1,14 +1,76 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { Actions } from '../actions/action-types';
+import { LicenseType } from '../../enums/licensetype.enum';
+import { AcknowledgeOptions } from '../../interfaces/acknowledge-options.interface';
+import { AuthorData } from '../../interfaces/author-data.interface';
+import { ContributionOptions } from '../../interfaces/contribution-options.interface';
+import { FeatureOptions } from '../../interfaces/feature-options.interface';
+import { GitHubOptions } from '../../interfaces/github-options.interface';
+import { InstallationOptions } from '../../interfaces/installation-options.interface';
+import { LicenseOptions } from '../../interfaces/license-options.interface';
+import { NPMOptions } from '../../interfaces/npm-options.interface';
+import { TechnologyOptions } from '../../interfaces/technology-options.interface';
 
 export interface EditorState {
+  title: string;
+  shortDescription: string;
   description: string;
+  github: GitHubOptions;
   displayMarkdownResult: boolean;
+  npm: NPMOptions;
+  images: string[];
+  features: FeatureOptions[];
+  technologies: TechnologyOptions[];
+  installation: InstallationOptions;
+  acknowledgments: AcknowledgeOptions[];
+  contribution: ContributionOptions;
+  author: AuthorData;
+  license: LicenseOptions;
+  watermark: boolean;
 }
 
 const initialState: EditorState = {
+  title: '',
+  shortDescription: 'string',
   description: '',
+  github: {
+    username: '',
+    repo: '',
+  },
   displayMarkdownResult: false,
+  npm: {
+    package: '',
+  },
+  images: [],
+  features: [],
+  technologies: [],
+  installation: {
+    projectName: '',
+    packageManager: '',
+    dependencies: [],
+    devDependencies: [],
+    installationSteps: [],
+    includeSetup: false,
+    setupSteps: [],
+    includeUsage: false,
+    usageSteps: [],
+  },
+  acknowledgments: [],
+  contribution: {
+    title: '',
+    description: '',
+    contributionGuidelinesLink: undefined,
+  },
+  author: {
+    name: '',
+    email: '',
+    url: '',
+    github: '',
+    likedIn: '',
+  },
+  license: { type: LicenseType.MIT, customText: undefined },
+  watermark: true,
 };
 
 export const editorReducer = createReducer(

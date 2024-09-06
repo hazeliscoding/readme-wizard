@@ -3,13 +3,13 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { initFlowbite } from 'flowbite';
 
+import { PickerItem } from './components/multi-picker/multi-picker.component';
 import {
   selectDisplayMarkdown,
   selectEditorDescription,
 } from './store/selectors/editor.selectors';
 import { Actions } from './store/actions/action-types';
 import { AppState } from './store/state.interface';
-import { Toast } from './models/toast.model';
 
 import { MarkdownService } from './services/markdown.service';
 import { UtilsService } from './services/utils.service';
@@ -126,9 +126,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  selectedTechnologies(technologies: any) {
+  selectedTechnologies(technologies: PickerItem[]) {
     console.log(technologies);
   }
-
-  generateToast(toast: Toast) {}
 }
