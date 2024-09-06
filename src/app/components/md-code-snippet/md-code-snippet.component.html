@@ -1,8 +1,10 @@
 <div class="w-full p-4 border border-gray-200 bg-gray-50 rounded-t-xl dark:border-gray-600 dark:bg-gray-700">
   <div class="grid grid-cols-3">
 
-    <div class="col-span-2 sm:col-span-1">
-      <a class="inline-flex items-center justify-center px-3 mr-3 text-xs font-medium text-gray-900 bg-white border border-gray-200 rounded-lg h-9 focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+
+    <!--        hidden buttons-->
+    <div class="!hidden col-span-2 sm:col-span-1">
+      <a class="inline-flex items-center justify-center h-9 mr-3 px-3 text-xs font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         href="https://github.com/themesberg/flowbite/blob/main/content/components/clipboard.md"
         rel="noopener nofollow noreferrer">
         <svg aria-hidden="true" class="w-3.5 h-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20"
@@ -15,9 +17,9 @@
       </a>
     </div>
 
-    <div class="items-center justify-center hidden col-span-1 space-x-2 sm:flex">
+    <div class=" !hidden items-center justify-center col-span-1 space-x-2 sm:flex">
       <button
-        class="flex items-center justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg w-9 h-9 toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        class="flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         data-tooltip-target="clipboard-example-full-screen-tooltip">
         <span class="sr-only">Toggle full view</span>
         <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +29,7 @@
       </button>
 
       <div
-        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+        class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip dark:bg-gray-700 opacity-0 invisible"
         data-popper-placement="top" id="clipboard-example-full-screen-tooltip" role="tooltip"
         style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(670px, -56px);">
         Toggle full screen
@@ -36,7 +38,7 @@
       </div>
 
       <button
-        class="flex items-center justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg w-9 h-9 toggle-tablet-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        class="flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-tablet-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         data-tooltip-target="clipboard-example-tablet-tooltip">
         <span class="sr-only">Toggle tablet view</span>
         <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +48,7 @@
       </button>
 
       <div
-        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+        class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip dark:bg-gray-700 opacity-0 invisible"
         data-popper-placement="top" id="clipboard-example-tablet-tooltip" role="tooltip"
         style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(712px, -56px);">
         Toggle tablet view
@@ -55,7 +57,7 @@
       </div>
 
       <button
-        class="flex items-center justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg w-9 h-9 toggle-mobile-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        class="flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-mobile-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
         data-tooltip-target="clipboard-example-mobile-tooltip">
         <span class="sr-only">Toggle mobile view</span>
         <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +67,7 @@
       </button>
 
       <div
-        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+        class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip dark:bg-gray-700 opacity-0 invisible"
         data-popper-placement="top" id="clipboard-example-mobile-tooltip" role="tooltip"
         style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(753px, -56px);">
         Toggle mobile view
@@ -74,31 +76,37 @@
       </div>
 
     </div>
-    <div class="flex justify-end col-span-1">
+    <div></div>
+    <div></div>
+
+    <div class="w-full flex justify-end col-span-1">
       <button
-        class="flex items-center justify-center mr-3 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-rtl w-9 h-9 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        data-toggle-direction="ltr" data-tooltip-target="clipboard-example-toggle-rtl" type="button">
+        class="hidden toggle-rtl flex items-center w-9 h-9 mr-3 justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        data-toggle-direction="ltr" data-tooltip-target="clipboard-example-toggle-rtl" hidden type="button">
         RTL
       </button>
       <div
-        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+        class="hidden absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
         data-popper-placement="top" id="clipboard-example-toggle-rtl" role="tooltip"
         style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1048px, 31px);">
         <span class="tooltip-text">Toggle RTL mode</span>
         <div class="tooltip-arrow" data-popper-arrow=""
           style="position: absolute; left: 0px; transform: translate(67px, 0px);"></div>
       </div>
-      <button
-        class="flex items-center justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg w-9 h-9 toggle-dark-state-example hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        data-toggle-dark="light" data-tooltip-target="clipboard-example-toggle-dark-mode-tooltip" type="button">
-        <svg aria-hidden="true" class="w-3.5 h-3.5" data-toggle-icon="moon" fill="currentColor" viewBox="0 0 18 20"
-          xmlns="http://www.w3.org/2000/svg">
+      <!--        hidden buttons-->
+
+      <button (click)="switchTheme()"
+        class="flex items-center w-9 h-9 justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-dark-state-example hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        data-tooltip-target="clipboard-example-toggle-dark-mode-tooltip" type="button">
+
+        <svg [ngClass]="{'hidden': theme === 'dark'}" aria-hidden="true" class="w-3.5 h-3.5" data-toggle-icon="moon"
+          fill="currentColor" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z">
           </path>
         </svg>
-        <svg aria-hidden="true" class="hidden w-3.5 h-3.5" data-toggle-icon="sun" fill="currentColor"
-          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg [ngClass]="{'hidden': theme === 'light'}" aria-hidden="true" class="w-3.5 h-3.5" data-toggle-icon="sun"
+          fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z">
           </path>
@@ -124,7 +132,7 @@
       <ul class="flex text-sm font-medium text-center text-gray-500 dark:text-gray-400">
         <li>
           <button (click)="switchTab('raw')" [ngClass]="tabEnabled === 'raw'? 'bg-gray-200' : 'bg-gray-100'"
-            class="inline-block w-full p-2 px-3 text-gray-800 bg-gray-100 border-r border-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white dark:bg-gray-800 dark:border-gray-600"
+            class="inline-block w-full p-2 px-3 text-gray-800 bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 border-r border-gray-200 dark:text-white dark:bg-gray-800 dark:border-gray-600"
             type="button">
             Raw
           </button>
@@ -132,7 +140,7 @@
 
         <li>
           <button (click)="switchTab('preview')" [ngClass]="tabEnabled === 'preview'? 'bg-gray-200' : 'bg-gray-100'"
-            class="inline-block w-full p-2 px-3 text-gray-800 bg-gray-100 border-r border-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white dark:bg-gray-800 dark:border-gray-600"
+            class="inline-block w-full p-2 px-3 text-gray-800 bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 border-r border-gray-200 dark:text-white dark:bg-gray-800 dark:border-gray-600"
             type="button">
             Preview
           </button>
@@ -168,9 +176,9 @@
     </div>
     <div class="relative">
       <div [hidden]="tabEnabled !== 'preview'" class="overflow-hidden" tabindex="-1">
-        <app-md-preview [text]="text"></app-md-preview>
+        <app-md-preview [text]="text" [theme]="theme"></app-md-preview>
       </div>
-      <div [hidden]="tabEnabled !== 'raw'" class="p-10 font-mono text-xs whitespace-pre-wrap bg-white" tabindex="-1">
+      <div [hidden]="tabEnabled !== 'raw'" class="font-mono bg-white text-xs p-10 whitespace-pre-wrap" tabindex="-1">
         {{ text }}
       </div>
     </div>

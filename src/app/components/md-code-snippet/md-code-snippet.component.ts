@@ -12,6 +12,7 @@ export class MdCodeSnippetComponent {
   @Input() text: string = '';
 
   tabEnabled: 'preview' | 'raw' = 'preview';
+  theme: 'dark' | 'light' = 'light';
 
   constructor(
     private utilsService: UtilsService,
@@ -25,5 +26,9 @@ export class MdCodeSnippetComponent {
   copyCode() {
     this.utilsService.copyToClipboard(this.text);
     this.toastService.success('Code copied to clipboard!');
+  }
+
+  switchTheme() {
+    this.theme = this.theme === 'dark' ? 'light' : 'dark';
   }
 }
