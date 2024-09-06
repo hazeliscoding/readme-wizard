@@ -24,11 +24,11 @@ export class MultiPickerComponent {
 
   selectedItems: PickerItem[] = [];
 
-  id =
-    Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15);
+  id!: string;
 
-  constructor() {}
+  constructor(private utilsService: UtilsService) {
+    this.id = this.utilsService.guid();
+  }
 
   itemChange(event: Event, item: PickerItem) {
     const target = event.target as HTMLInputElement;

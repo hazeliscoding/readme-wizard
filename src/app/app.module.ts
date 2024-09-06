@@ -16,6 +16,7 @@ import { MultiPickerComponent } from './components/multi-picker/multi-picker.com
 import { RawCodeSnippetComponent } from './components/raw-code-snippet/raw-code-snippet.component';
 import { MdCodeSnippetComponent } from './components/md-code-snippet/md-code-snippet.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ToastComponent } from './components/toast/toast.component';
     }),
     MarkdownModule.forRoot(),
     ReactiveFormsModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
