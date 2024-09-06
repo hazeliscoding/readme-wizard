@@ -7,7 +7,7 @@ import { reducers } from './store/reducers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MdPreviewComponent } from './components/md-preview/md-preview.component';
@@ -18,6 +18,10 @@ import { MdCodeSnippetComponent } from './components/md-code-snippet/md-code-sni
 import { ToastComponent } from './components/toast/toast.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './components/form/form.component';
+import { FormCheckboxComponent } from './components/form-checkbox/form-checkbox.component';
+import { FormFieldComponent } from './components/form-field/form-field.component';
+import { FormRadioComponent } from './components/form-radio/form-radio.component';
+import { SectionTitleComponent } from './components/section-title/section-title.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { FormComponent } from './components/form/form.component';
     MdCodeSnippetComponent,
     ToastComponent,
     FormComponent,
+    FormCheckboxComponent,
+    FormFieldComponent,
+    FormRadioComponent,
+    SectionTitleComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +49,7 @@ import { FormComponent } from './components/form/form.component';
     MarkdownModule.forRoot(),
     ReactiveFormsModule,
     NoopAnimationsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
