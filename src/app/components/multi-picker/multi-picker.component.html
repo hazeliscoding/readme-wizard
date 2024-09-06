@@ -1,90 +1,72 @@
 <div class="flex flex-col mb-4">
-  <!-- A container that sets the layout to a vertical flexbox and adds bottom margin -->
   <div class="flex items-center justify-between">
-    <!-- A container that horizontally aligns its children with space between them -->
     <h6 class="capitalize">{{ title }}</h6>
-    <!-- Displays a title with first letter capitalized dynamically from 'title' variable -->
     <button [attr.data-dropdown-toggle]="id" [id]="id + 'SearchButton'"
       class="inline-flex items-center px-3 text-xs font-medium text-center text-white capitalize bg-blue-700 rounded-lg h-7 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       data-dropdown-placement="bottom" type="button">
-      <!-- A button styled for dropdown toggle. Attributes dynamically generated using 'id'. -->
       Select {{ title }}
-      <!-- Button label dynamically showing 'Select' followed by 'title' -->
       <svg aria-hidden="true" class="w-2.5 h-2.5 ms-3" fill="none" viewBox="0 0 10 6"
         xmlns="http://www.w3.org/2000/svg">
-        <!-- SVG icon (chevron) used to indicate dropdown action -->
         <path d="m1 1 4 4 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
       </svg>
-      <!-- SVG icon of a down arrow used in the button -->
     </button>
   </div>
 
   <div
     class="flex flex-wrap w-full gap-2 p-4 overflow-auto bg-white border border-gray-300 rounded-lg min-h-8 max-h-24">
-    <!-- A container for displaying selected items with scrollable functionality and max/min height -->
     <span *ngFor="let selected of selectedItems"
       class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded me-2 dark:bg-blue-900 dark:text-blue-300"
       id="badge-dismiss-default">
-      <!-- A span displaying each selected item in the 'selectedItems' array with remove functionality -->
       {{ selected.name }}
-      <!-- Displays the name of the selected item -->
       <button (click)="removeItem(selected)" aria-label="Remove"
         class="inline-flex items-center p-1 text-sm text-blue-400 bg-transparent rounded-sm ms-2 hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300"
         data-dismiss-target="#badge-dismiss-default" type="button">
-        <!-- A button to remove the selected item. On click, triggers removeItem() method -->
         <svg aria-hidden="true" class="w-2 h-2" fill="none" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-          <!-- SVG icon (X mark) used to indicate removal of the selected item -->
           <path d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" stroke="currentColor" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
         </svg>
       </button>
     </span>
-    <!-- 'X' icon is used to remove items. When clicked, the item is removed -->
   </div>
+
 </div>
+
 
 <!-- Dropdown menu -->
 <div [id]="id" class="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
-  <!-- Dropdown container that toggles visibility and shows the search and list of items -->
   <div class="p-3">
-    <!-- Padding around the search input area -->
     <label class="sr-only" for="input-group-search">Search {{ title }}</label>
-    <!-- Screen reader-only label for accessibility -->
     <div class="relative">
-      <!-- Relative container for the input and search icon -->
       <div class="absolute inset-y-0 flex items-center pointer-events-none rtl:inset-r-0 start-0 ps-3">
         <svg aria-hidden="true" class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg">
-          <!-- Search icon (magnifying glass) positioned inside the input field -->
           <path d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" stroke="currentColor" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
         </svg>
       </div>
-      <input #searchInput [placeholder]="'Search ' + title"
+      <input #searchInput (keydown.escape)="searchInput.value = '';" [placeholder]="'Search ' + title"
         class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         id="input-group-search" type="text">
-      <!-- Search input field with a dynamic placeholder. It uses a template reference variable 'searchInput'. -->
     </div>
   </div>
   <small *ngIf="items.length === 0" class="block text-center">No items to select</small>
-  <!-- Displays a message if there are no items to display -->
   <ul aria-labelledby="dropdownSearchButton"
     class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200">
-    <!-- List container for dropdown items with scrollable functionality -->
-    <li *ngFor="let item of items" [hidden]="!item.name.toLowerCase().includes(searchInput.value.toLowerCase())">
-      <!-- Loops through the 'items' array and filters them based on the search input value -->
-      <div class="flex items-center rounded ps-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-        <input (change)="itemChange($event, item)" [checked]="selectedItems.includes(item)" [id]="id + item.value"
-          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-          type="checkbox" value="">
-        <!-- Checkbox to select/unselect an item, triggers itemChange() method on change -->
-        <label [for]="id + item.value"
-          class="w-full py-2 text-sm font-medium text-gray-900 rounded ms-2 dark:text-gray-300">
-          {{ item.name }}
-          <!-- Displays the name of the item -->
-        </label>
+    <li *ngFor="let item of items" [hidden]="!item.name.toLowerCase().includes(searchInput.value.toLowerCase())"
+      class="mb-1">
+      <div class="flex-col rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+        <div class="flex items-center cursor-pointer ps-2">
+          <input (change)="itemChange($event, item)" [checked]="selectedItems.includes(item)" [id]="id + item.value"
+            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            type="checkbox" value="">
+          <label [for]="id + item.value"
+            class="w-full py-2 text-sm font-medium text-gray-900 rounded ms-2 dark:text-gray-300">
+            {{
+            item.name
+            }}</label>
+        </div>
+        <p class="px-2 pb-2 text-xs text-slate-400">{{ item.description }}</p>
       </div>
     </li>
-    <!-- Each list item has a checkbox, and its state is managed with Angular's two-way binding -->
   </ul>
 </div>

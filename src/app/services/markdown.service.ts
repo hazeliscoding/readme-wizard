@@ -73,25 +73,92 @@ export class MarkdownService {
 
     const techStack = [
       {
-        name: 'Webpack',
-        value: 'webpack',
-        description: 'A module bundler for JavaScript applications',
-      },
+        name: 'Ionic',
+        value: 'ionic',
+        description: 'Hybrid mobile app development framework',
+        mainColor: '#3880FF',
+      }, // Blue
       {
-        name: 'vite',
-        value: 'vite',
-        description: 'A fast and opinionated frontend build tool',
-      },
+        name: 'Quasar',
+        value: 'quasar',
+        description: 'Vue.js based framework for mobile and web',
+        mainColor: '#1976D2',
+      }, // Blue
       {
-        name: 'Babel',
-        value: 'babel',
-        description: 'An open-source JavaScript transpiler',
-      },
+        name: 'Nuxt.js',
+        value: 'nuxtjs',
+        description: 'Vue.js framework for server-side rendering',
+        mainColor: '#00C58E',
+      }, // Turquoise
       {
-        name: 'Sass',
-        value: 'sass',
-        description: 'A CSS extension language for stylesheets',
-      },
+        name: 'Gatsby',
+        value: 'gatsby',
+        description: 'Static site generator for React',
+        mainColor: '#663399',
+      }, // Rebecca
+      // Purple
+      {
+        name: 'Gridsome',
+        value: 'gridsome',
+        description: 'Static site generator for Vue.js',
+        mainColor: '#2C3E50',
+      }, // Dark
+      // Blue
+      {
+        name: 'NestJS',
+        value: 'nestjs',
+        description: 'Server-side framework for TypeScript',
+        mainColor: '#E0234E',
+      }, // Red
+      {
+        name: 'AdonisJS',
+        value: 'adonisjs',
+        description: 'MVC web framework for Node.js',
+        mainColor: '#4B32C3',
+      }, // Indigo
+      {
+        name: 'LoopBack',
+        value: 'loopback',
+        description: 'API framework for Node.js',
+        mainColor: '#5A68A5',
+      }, // Light
+      // Purple
+      {
+        name: 'Slim',
+        value: 'slim',
+        description: 'Microframework for PHP',
+        mainColor: '#2C3E50',
+      }, // Dark Blue
+      {
+        name: 'Flask-RESTful',
+        value: 'flask-restful',
+        description: 'RESTful API toolkit for Flask',
+        mainColor: '#000000',
+      }, // Black
+      {
+        name: 'Django REST framework',
+        value: 'django-rest-framework',
+        description: 'RESTful API framework for Django',
+        mainColor: '#092E20',
+      }, // Dark Green
+      {
+        name: 'Rails API',
+        value: 'rails-api',
+        description: 'API-only mode for Ruby on Rails',
+        mainColor: '#CC0000',
+      }, // Red
+      {
+        name: 'Sinatra',
+        value: 'sinatra',
+        description: 'Microframework for Ruby',
+        mainColor: '#7B7B7B',
+      }, // Grey
+      {
+        name: 'Dropwizard',
+        value: 'dropwizard',
+        description: 'Web framework for Java',
+        mainColor: '#7B98AB',
+      }, // Light
     ];
 
     const sections = [

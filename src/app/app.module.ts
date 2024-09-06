@@ -17,6 +17,7 @@ import { RawCodeSnippetComponent } from './components/raw-code-snippet/raw-code-
 import { MdCodeSnippetComponent } from './components/md-code-snippet/md-code-snippet.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     RawCodeSnippetComponent,
     MdCodeSnippetComponent,
     ToastComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
