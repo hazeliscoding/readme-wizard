@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { initFlowbite } from 'flowbite';
 import {
   selectDisplayMarkdown,
   selectEditorDescription,
 } from './store/selectors/editor.selectors';
 import { Actions } from './store/actions/action-types';
 import { AppState } from './store/state.interface';
-import { Observable } from 'rxjs';
-import { readmeDemo } from '../data/data';
 
-import { initFlowbite } from 'flowbite';
-import { PickerItem } from './components/multi-picker/multi-picker.component';
+import { MarkdownService } from './services/markdown.service';
+import { UtilsService } from './services/utils.service';
+
+import { readmeDemo } from '../data/data';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
   public description$: Observable<string>;
   public displayMarkdown$: Observable<boolean>;
   public markdownData = readmeDemo;
+  formattedCode = '';
 
   developmentTechnologies = [
     // Languages
@@ -93,13 +96,19 @@ export class AppComponent implements OnInit {
     { name: 'GitLab', value: 'gitlab' },
   ];
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private markdownService: MarkdownService,
+    private utilsService: UtilsService
+  ) {
     this.description$ = this.store.select(selectEditorDescription);
     this.displayMarkdown$ = this.store.select(selectDisplayMarkdown);
   }
 
   ngOnInit() {
     initFlowbite();
+
+    this.markdownData = this.markdownService.test();
   }
 
   generateMarkdown() {

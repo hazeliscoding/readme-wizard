@@ -1,5 +1,5 @@
 <div
-  class="relative rounded-md w-full bg-white px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
-  <markdown ngPreserveWhitespaces [data]="text" (ready)="ready.next(text)">
+  class="relative w-full px-6 py-6 prose bg-white shadow-xl prose-img:m-0 prose-a:inline-block prose-p:my-1 shadow-slate-700/10 ring-1 ring-gray-800/5 md:mx-auto md:max-w-3xl lg:max-w-4xl ">
+  <markdown (ready)="ready.next(text)" [data]="text" ngPreserveWhitespaces>
   </markdown>
 </div>
