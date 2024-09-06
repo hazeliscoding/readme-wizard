@@ -34,6 +34,7 @@
     "@angular/compiler-cli": "^18.2.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/jasmine": "~5.1.0",
+    "@types/prismjs": "^1.26.4",
     "autoprefixer": "^10.4.20",
     "git-cz": "^4.9.0",
     "jasmine-core": "~5.2.0",
