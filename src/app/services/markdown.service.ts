@@ -224,6 +224,7 @@ export class MarkdownService {
       this.generateContributionSection(contributionSection),
       this.generateAuthorSection('John Doe', 'john@example.com'),
       this.generateLicenseSection(licenseSection),
+      this.generateWatermark(),
     ];
 
     let result = '';
@@ -788,5 +789,9 @@ ${description}
 
   generateLinksPlaceholder() {
     return this.LINKS_PLACEHOLDER;
+  }
+
+  generateWatermark() {
+    return '---\n <div align="center">Built with ❤️ with <a href="https://github.com/hazeliscoding/readme-wizard">ReadMe Wizard</a></div>';
   }
 }
