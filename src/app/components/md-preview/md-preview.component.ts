@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class MdPreviewComponent {
   @Input() text!: string;
-  @Output() ready!: EventEmitter<string>;
+  @Output() ready: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
 }

@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { initFlowbite } from 'flowbite';
+
 import {
   selectDisplayMarkdown,
   selectEditorDescription,
 } from './store/selectors/editor.selectors';
 import { Actions } from './store/actions/action-types';
 import { AppState } from './store/state.interface';
+import { Toast } from './models/toast.model';
 
 import { MarkdownService } from './services/markdown.service';
 import { UtilsService } from './services/utils.service';
+import { ToastService } from './services/toast.service';
 
 import { readmeDemo } from '../data/data';
 
@@ -99,7 +102,8 @@ export class AppComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private markdownService: MarkdownService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    public toastService: ToastService
   ) {
     this.description$ = this.store.select(selectEditorDescription);
     this.displayMarkdown$ = this.store.select(selectDisplayMarkdown);
@@ -113,6 +117,7 @@ export class AppComponent implements OnInit {
 
   generateMarkdown() {
     this.store.dispatch(Actions.displayMarkdownResult());
+    this.toastService.success('testing');
   }
 
   addDescription() {
@@ -124,4 +129,6 @@ export class AppComponent implements OnInit {
   selectedTechnologies(technologies: any) {
     console.log(technologies);
   }
+
+  generateToast(toast: Toast) {}
 }

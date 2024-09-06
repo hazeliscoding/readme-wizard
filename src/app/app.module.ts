@@ -15,6 +15,7 @@ import { BackgroundComponent } from './components/background/background.componen
 import { MultiPickerComponent } from './components/multi-picker/multi-picker.component';
 import { RawCodeSnippetComponent } from './components/raw-code-snippet/raw-code-snippet.component';
 import { MdCodeSnippetComponent } from './components/md-code-snippet/md-code-snippet.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MdCodeSnippetComponent } from './components/md-code-snippet/md-code-sni
     MultiPickerComponent,
     RawCodeSnippetComponent,
     MdCodeSnippetComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
