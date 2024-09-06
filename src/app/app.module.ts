@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { MdPreviewComponent } from './components/md-preview/md-preview.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { MultiPickerComponent } from './components/multi-picker/multi-picker.component';
+import { RawCodeSnippetComponent } from './components/raw-code-snippet/raw-code-snippet.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MultiPickerComponent } from './components/multi-picker/multi-picker.com
     MdPreviewComponent,
     BackgroundComponent,
     MultiPickerComponent,
+    RawCodeSnippetComponent,
   ],
   imports: [
     BrowserModule,
