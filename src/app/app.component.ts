@@ -117,6 +117,7 @@ export class AppComponent implements OnInit {
 
   generateMarkdown() {
     this.store.dispatch(Actions.displayMarkdownResult());
+    window.scroll(0, 0);
   }
 
   addDescription() {

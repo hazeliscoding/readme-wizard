@@ -1,8 +1,8 @@
 <app-background xmlns="http://www.w3.org/1999/html"></app-background>
 
-<div class="absolute flex flex-col items-center justify-center w-full gap-12 py-12 lg:flex-row lg:items-start">
+<div class="absolute flex flex-col items-center justify-center w-full gap-12 lg:flex-row lg:items-start">
 
-    <main [ngClass]="{'max-w-96': displayMarkdown$ | async}" class="block lg:sticky top-0 w-full max-w-[700px]">
+    <main [ngClass]="{'max-w-96': displayMarkdown$ | async}" class="block w-full max-w-[700px]">
 
         <div class="p-4 overflow-auto">
 
@@ -136,7 +136,8 @@
         </button>
 
     </main>
-    <aside *ngIf="displayMarkdown$ | async" class="max-h-full w-full max-w-[800px] overflow-hidden">
+    <aside *ngIf="displayMarkdown$ | async"
+        class="max-h-full w-full max-w-[800px] top-9 block lg:sticky  overflow-hidden">
         <app-md-code-snippet [text]="markdownData"></app-md-code-snippet>
     </aside>
 </div>
