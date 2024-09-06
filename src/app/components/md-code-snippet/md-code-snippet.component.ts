@@ -7,4 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class MdCodeSnippetComponent {
   @Input() text: string = '';
+
+  tabEnabled: 'preview' | 'raw' = 'preview';
+
+  constructor() {}
+
+  switchTab(tab: 'preview' | 'raw') {
+    this.tabEnabled = tab;
+  }
 }
