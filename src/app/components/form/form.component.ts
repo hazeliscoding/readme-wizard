@@ -1,18 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { debounceTime, distinctUntilChanged, Observable, Subject } from 'rxjs';
 
 import { PickerItem } from '../multi-picker/multi-picker.component';
 import { Actions } from '../../store/actions/action-types';
 import { AppState } from '../../store/state.interface';
 import { MarkdownService } from '../../services/markdown.service';
 
+import { InputInteraction } from '../../interfaces/input-interaction.interface';
+import { LicenseOptions } from '../../interfaces/license-options.interface';
+import { ContributorOptions } from '../../interfaces/contributor-options.interface';
+import { ContributionOptions } from '../../interfaces/contribution-options.interface';
+import { AcknowledgeOptions } from '../../interfaces/acknowledge-options.interface';
+import { TechnologyOptions } from '../../interfaces/technology-options.interface';
+import { FeatureOptions } from '../../interfaces/feature-options.interface';
 import { LicenseType } from '../../enums/licensetype.enum';
 import { technologies } from '../../../data/technologies';
-import { debounceTime, distinctUntilChanged, Observable, Subject } from 'rxjs';
-import { InputInteraction } from '../../interfaces/input-interaction.interface';
 import {
   editorSelector,
+  selectAcknowledgment,
+  selectAuthorGithubUsername,
+  selectAuthorName,
+  selectContentTable,
+  selectContribution,
+  selectContributors,
+  selectDescription,
+  selectFeatures,
   selectGeneratingMarkdown,
+  selectInstallSteps,
+  selectLicense,
+  selectLogo,
+  selectMainImage,
+  selectNavigationLinks,
+  selectNpmBadges,
+  selectNpmPackage,
+  selectParameters,
+  selectRepository,
+  selectRepositoryBadges,
+  selectScreenshots,
+  selectShortDescription,
+  selectStackTech,
+  selectTitle,
+  selectUsageSteps,
 } from '../../store/selectors/editor.selectors';
 import { EditorState } from '../../store/reducers/editor.reducer';
 import { testData } from '../../../data/test';
@@ -30,6 +59,35 @@ export class FormComponent implements OnInit {
   public debounceInput$ = new Subject<InputInteraction>();
   public generating$ = new Observable<boolean>();
   public state$ = new Observable<EditorState>();
+  public title$ = new Observable<string>();
+  public description$: Observable<string>;
+  public shortDescription$ = new Observable<string>();
+  public contentTable$ = new Observable<boolean>();
+  public navigationLinks$ = new Observable<boolean>();
+  public features$ = new Observable<FeatureOptions[]>();
+  public repository$ = new Observable<string>();
+  public repositoryBadges$ = new Observable<boolean>();
+  public npmUrl$ = new Observable<string>();
+  public npmBadges$ = new Observable<boolean>();
+  public logo$ = new Observable<string>();
+  public mainImage$ = new Observable<string>();
+  public screenshots$ = new Observable<string[]>();
+  public stack$ = new Observable<TechnologyOptions[]>();
+  public installSteps$ = new Observable<string[]>();
+  public usageSteps$ = new Observable<string[]>();
+  public parameters$: Observable<
+    {
+      field: string;
+      description: string;
+      default?: string | undefined;
+    }[]
+  >;
+  public acknowledgements$ = new Observable<AcknowledgeOptions[]>();
+  public contribution$ = new Observable<ContributionOptions>();
+  public contributors$: Observable<ContributorOptions[]>;
+  public authorName$: Observable<string>;
+  public githubUsername$: Observable<string>;
+  public license$: Observable<LicenseOptions>;
 
   constructor(
     private store: Store<AppState>,
@@ -39,6 +97,29 @@ export class FormComponent implements OnInit {
 
     this.generating$ = this.store.select(selectGeneratingMarkdown);
     this.state$ = this.store.select(editorSelector);
+    this.title$ = this.store.select(selectTitle);
+    this.description$ = this.store.select(selectDescription);
+    this.shortDescription$ = this.store.select(selectShortDescription);
+    this.contentTable$ = this.store.select(selectContentTable);
+    this.navigationLinks$ = this.store.select(selectNavigationLinks);
+    this.features$ = this.store.select(selectFeatures);
+    this.repository$ = this.store.select(selectRepository);
+    this.repositoryBadges$ = this.store.select(selectRepositoryBadges);
+    this.npmUrl$ = this.store.select(selectNpmPackage);
+    this.npmBadges$ = this.store.select(selectNpmBadges);
+    this.logo$ = this.store.select(selectLogo);
+    this.mainImage$ = this.store.select(selectMainImage);
+    this.screenshots$ = this.store.select(selectScreenshots);
+    this.stack$ = this.store.select(selectStackTech);
+    this.installSteps$ = this.store.select(selectInstallSteps);
+    this.usageSteps$ = this.store.select(selectUsageSteps);
+    this.parameters$ = this.store.select(selectParameters);
+    this.acknowledgements$ = this.store.select(selectAcknowledgment);
+    this.contribution$ = this.store.select(selectContribution);
+    this.contributors$ = this.store.select(selectContributors);
+    this.authorName$ = this.store.select(selectAuthorName);
+    this.githubUsername$ = this.store.select(selectAuthorGithubUsername);
+    this.license$ = this.store.select(selectLicense);
   }
 
   ngOnInit(): void {
@@ -55,7 +136,7 @@ export class FormComponent implements OnInit {
       }
     });
 
-    // this.store.dispatch(Actions.setData({ data: testData }));
+    this.store.dispatch(Actions.setData({ data: testData }));
   }
 
   BuildMarkdown(state: EditorState) {

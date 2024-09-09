@@ -18,7 +18,7 @@ export class FormFieldComponent {
   @Output()
   change = new EventEmitter<Event>();
 
-  @Input() value = '';
+  @Input() value: string | null | undefined = null;
   @Output() valueChange = new EventEmitter<string>();
 
   constructor() {}
@@ -26,7 +26,7 @@ export class FormFieldComponent {
   inputChange(e: Event) {
     e.stopPropagation();
     e.preventDefault();
-    
+
     this.valueChange.emit((e.target as HTMLInputElement).value);
   }
 }
