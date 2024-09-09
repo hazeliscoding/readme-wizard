@@ -3,7 +3,8 @@ import { EditorState } from '../app/store/reducers/editor.reducer';
 
 export const testData: EditorState = {
   title: 'ReadMe Wizard',
-  shortDescription: 'Easily create markdown documentation for your project',
+  shortDescription:
+    'Fed up with manually creating README files? Try our web app that simplifies the documentation process for GitHub projects. With our user-friendly platform, you can quickly generate detailed and visually appealing Markdown documentation in just seconds.',
   description: '',
   navigationLinks: true,
   contentTable: true,
@@ -97,6 +98,16 @@ export const testData: EditorState = {
     setupSteps: [],
     includeUsage: false,
     usageSteps: [],
+  },
+  configuration: {
+    description: 'Default values to configure',
+    parameters: [
+      {
+        field: 'name',
+        description: 'Project name',
+        default: 'project',
+      },
+    ],
   },
   acknowledgments: [
     {

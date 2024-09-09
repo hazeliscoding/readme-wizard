@@ -473,7 +473,7 @@ This project was created by ${
         <p align="center"><a href="https://github.com/${github.username}/${github.repo}/graphs/contributors"><img src="https://img.shields.io/github/contributors/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Contributors"></a>
         <a href="https://github.com/${github.username}/${github.repo}/network/members"><img src="https://img.shields.io/github/forks/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Forks"></a>
         <a href="https://github.com/${github.username}/${github.repo}/stargazers"><img src="https://img.shields.io/github/stars/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Stargazers"></a>
-        <a href="https://github.com/${github.username}/${github.repo}/issues"><img src="https://img.shields.io/github/issues/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Issues"></a></p><br/><br/>`;
+        <a href="https://github.com/${github.username}/${github.repo}/issues"><img src="https://img.shields.io/github/issues/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Issues"></a></p><br/>`;
 
     return badges;
   }
@@ -637,7 +637,7 @@ This project was created by ${
     return `
 <div align="center">
 
-<a href="${url}" target="_blank" title="Go to the Gowebly CLI website"><img width="196px" alt="gowebly logo" src="${imgUrl}"></a>
+<a href="${url}" target="_blank" title="Go to the ${url} website"><img width="196px" alt="gowebly logo" src="${imgUrl}"></a>
 
 <a name="readme-top"></a>
 
