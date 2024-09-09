@@ -76,6 +76,21 @@
   <app-form-checkbox #techStack (change)=" inputChange('tech-stack', $event.target)"
     [title]="'Add Tech Stack'"></app-form-checkbox>
 
+  <app-section-title [title]="'Setup'"></app-section-title>
+  <small>Add instructions to run the project...</small>
+
+  <h6>Installation</h6>
+  <app-multi-field (valueChange)="debounceInput$.next({type: 'acknowledge', value: $event})" [fields]="['Description']"
+    [textarea]="true"></app-multi-field>
+
+  <h6>Usage</h6>
+  <app-multi-field (valueChange)="debounceInput$.next({type: 'acknowledge', value: $event})" [fields]="['Description']"
+    [textarea]="true"></app-multi-field>
+
+  <h6>Parameters</h6>
+  <app-multi-field (valueChange)="debounceInput$.next({type: 'acknowledge', value: $event})"
+    [fields]="['Name', 'Description', 'Default']"></app-multi-field>
+
   <div [ngClass]="techStack.value? '' : 'hidden'" class="flex flex-col">
 
     <app-multi-picker (selectedItemsChange)="selectedTechnologies($event)" [items]="technologies"

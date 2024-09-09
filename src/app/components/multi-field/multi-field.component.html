@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-2 p-2 mt-3 bg-white border border-gray-300 rounded-lg">
   <div *ngFor="let entry of entries; let e = index" class="flex items-center gap-2">
     <ng-container *ngFor="let field of fields; let k = index">
-      <app-form-field (valueChange)="assignValue($event, k, e)" [placeholder]="field"
+      <app-form-field (valueChange)="assignValue($event, k, e)" [placeholder]="field" [textarea]="textarea"
         class="flex-grow"></app-form-field>
     </ng-container>
     <button (click)="removeEntry(entry.id)"

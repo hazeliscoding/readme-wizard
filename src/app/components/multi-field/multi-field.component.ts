@@ -10,6 +10,9 @@ export class MultiFieldComponent {
   @Input()
   fields: string[] = [];
 
+  @Input()
+  textarea: boolean = false;
+
   @Output()
   valueChange = new EventEmitter<string[][]>();
 

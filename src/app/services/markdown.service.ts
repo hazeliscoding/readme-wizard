@@ -11,6 +11,7 @@ import { ContributionOptions } from '../interfaces/contribution-options.interfac
 
 import { LicenseType } from '../enums/licensetype.enum';
 import { EditorState } from '../store/reducers/editor.reducer';
+import { ContributorOptions } from '../interfaces/contributor-options.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -59,40 +60,47 @@ export class MarkdownService {
       state.features.length > 0 && this.generateFeaturesSection(state.features),
       state.technologies.length > 0 &&
         this.generateTechStackSection(state.technologies),
-      this.generateInstallSection({
-        projectName: 'My Awesome Project',
-        packageManager: 'npm',
-        dependencies: ['react', 'react-dom', 'axios'],
-        devDependencies: ['eslint', 'prettier'],
-        installationSteps: ['Run the development server with `npm run dev`'],
-        includeSetup: true,
-        setupSteps: [
-          'Install Node.js v12 or later',
-          'Install a code editor (e.g., Visual Studio Code)',
-        ],
-        includeUsage: true,
-        usageSteps: [
-          'Open the project directory in your code editor',
-          'Run `npm start` to start the development server',
-        ],
-      }),
-      this.generateParametersTable([
-        {
-          fieldName: 'name',
-          description: 'Name of the user',
-          defaultValue: 'John Doe',
-        },
-        { fieldName: 'age', description: 'Age of the user' },
-        {
-          fieldName: 'isAdmin',
-          description: 'Whether the user is an admin or not',
-          defaultValue: 'false',
-        },
-      ]),
+      // this.generateInstallSection({
+      //   projectName: 'My Awesome Project',
+      //   packageManager: 'npm',
+      //   dependencies: ['react', 'react-dom', 'axios'],
+      //   devDependencies: ['eslint', 'prettier'],
+      //   installationSteps: ['Run the development server with `npm run dev`'],
+      //   includeSetup: true,
+      //   setupSteps: [
+      //     'Install Node.js v12 or later',
+      //     'Install a code editor (e.g., Visual Studio Code)',
+      //   ],
+      //   includeUsage: true,
+      //   usageSteps: [
+      //     'Open the project directory in your code editor',
+      //     'Run `npm start` to start the development server',
+      //   ],
+      // }),
+      // this.generateParametersTable([
+      //   {
+      //     fieldName: 'name',
+      //     description: 'Name of the user',
+      //     defaultValue: 'John Doe',
+      //   },
+      //   { fieldName: 'age', description: 'Age of the user' },
+      //   {
+      //     fieldName: 'isAdmin',
+      //     description: 'Whether the user is an admin or not',
+      //     defaultValue: 'false',
+      //   },
+      // ]),
+      this.generateSetupTitle(state),
+      this.generateInstallationSection(state.installSteps),
+      this.generateUsageSection(state.usageSteps),
+      this.generateParametersTable(state.configuration.parameters),
       state.acknowledgments.length > 0 &&
         this.generateAcknowledgementsSection(state.acknowledgments),
       state.contribution.add &&
-        this.generateContributionSection(state.contribution),
+        this.generateContributionSection(
+          state.contribution,
+          state.contributors
+        ),
       this.generateAuthorSection(state.author),
       this.generateLicenseSection(state.license),
       this.generateWatermark(),
@@ -305,21 +313,21 @@ export class MarkdownService {
           'Run `npm start` to start the development server',
         ],
       }),
-      this.generateParametersTable([
-        {
-          fieldName: 'name',
-          description: 'Name of the user',
-          defaultValue: 'John Doe',
-        },
-        { fieldName: 'age', description: 'Age of the user' },
-        {
-          fieldName: 'isAdmin',
-          description: 'Whether the user is an admin or not',
-          defaultValue: 'false',
-        },
-      ]),
+      // this.generateParametersTable([
+      //   {
+      //     fieldName: 'name',
+      //     description: 'Name of the user',
+      //     defaultValue: 'John Doe',
+      //   },
+      //   { fieldName: 'age', description: 'Age of the user' },
+      //   {
+      //     fieldName: 'isAdmin',
+      //     description: 'Whether the user is an admin or not',
+      //     defaultValue: 'false',
+      //   },
+      // ]),
       this.generateAcknowledgementsSection(acknowledgements),
-      this.generateContributionSection(contributionSection),
+      this.generateContributionSection(contributionSection, []),
       this.generateAuthorSection({
         name: 'John Doe',
         email: 'john@example.com',
@@ -342,15 +350,23 @@ export class MarkdownService {
     return result;
   }
 
+  generateSetupTitle(state: EditorState) {
+    return state.installSteps.length > 0 ||
+      state.usageSteps.length > 0 ||
+      state.configuration.parameters.length > 0
+      ? '## Setup'
+      : '';
+  }
+
   generateTableContentPlaceholder() {
     return this.TABLE_CONTENT_PLACEHOLDER;
   }
 
   generateParametersTable(
     properties: {
-      fieldName: string;
+      field: string;
       description: string;
-      defaultValue?: string;
+      default?: string;
     }[]
   ): string {
     const tableHeader =
@@ -358,13 +374,13 @@ export class MarkdownService {
     let tableBody = '';
 
     for (const prop of properties) {
-      const row = `| \`${prop.fieldName}\` | ${prop.description} | ${
-        prop.defaultValue || ''
+      const row = `| \`${prop.field}\` | ${prop.description} | ${
+        prop.default || ''
       } |`;
       tableBody += `${row}\n`;
     }
 
-    return `${tableHeader}\n${tableBody}`;
+    return `### Parameters\n\n${tableHeader}\n${tableBody}`;
   }
 
   generateNpmBadges(
@@ -544,7 +560,10 @@ This project was created by ${
     return markdownContent;
   }
 
-  generateContributionSection(contribution: ContributionOptions): string {
+  generateContributionSection(
+    contribution: ContributionOptions,
+    contributors: ContributorOptions[]
+  ): string {
     const { contributionGuidelinesLink } = contribution;
     let contributionSection = `## Contributing\n\nWe welcome contributions from the community! If you would like to contribute to this project, please follow the guidelines below.\n`;
 
@@ -562,6 +581,14 @@ This project was created by ${
 
     if (contributionGuidelinesLink) {
       contributionSection += `\nFor more information on how to contribute, please visit [Contribution Guidelines](${contributionGuidelinesLink}).\n`;
+    }
+
+    if (contributors.length > 0) {
+      contributionSection += `### Contributors\n\n`;
+
+      contributors.forEach((contributor) => {
+        contributionSection += `- ${contributor.name} (${contributor.username})\n`;
+      });
     }
 
     return contributionSection;
@@ -743,6 +770,26 @@ ${description}
     }
 
     return installSection;
+  }
+
+  generateInstallationSection(steps: string[]): string {
+    let installSection = `### Installation\n\nTo install this project, follow these steps:\n\n`;
+
+    steps.forEach((step, index) => {
+      installSection += `${index + 1}. ${step}\n\n`;
+    });
+
+    return installSection;
+  }
+
+  generateUsageSection(steps: string[]): string {
+    let usageSection = `### Usage\n\nAfter installation, you can use the project by following these steps:\n\n`;
+
+    steps.forEach((step, index) => {
+      usageSection += `${index + 1}. ${step}\n\n`;
+    });
+
+    return usageSection;
   }
 
   /**

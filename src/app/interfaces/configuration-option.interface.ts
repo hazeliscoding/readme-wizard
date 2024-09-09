@@ -3,6 +3,6 @@ export interface ConfigurationOptions {
   parameters: {
     field: string;
     description: string;
-    default: string;
+    default?: string;
   }[];
 }
