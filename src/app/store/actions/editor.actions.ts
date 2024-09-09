@@ -4,6 +4,7 @@ import { FeatureOptions } from '../../interfaces/feature-options.interface';
 import { LicenseOptions } from '../../interfaces/license-options.interface';
 import { TechnologyOptions } from '../../interfaces/technology-options.interface';
 import { ContributorOptions } from '../../interfaces/contributor-options.interface';
+import { EditorState } from '../reducers/editor.reducer';
 
 export const modifyTitle = createAction(
   '[Form] Modify Title',
@@ -131,4 +132,9 @@ export const generateMarkdown = createAction(
 export const markdownGenerated = createAction(
   '[Form] Markdown Generated',
   props<{ markdown: string }>()
+);
+
+export const setData = createAction(
+  '[Form] Set Data',
+  props<{ data: EditorState }>()
 );

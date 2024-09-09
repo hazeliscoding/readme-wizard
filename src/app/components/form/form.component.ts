@@ -15,6 +15,7 @@ import {
   selectGeneratingMarkdown,
 } from '../../store/selectors/editor.selectors';
 import { EditorState } from '../../store/reducers/editor.reducer';
+import { testData } from '../../../data/test';
 
 @Component({
   selector: 'app-form',
@@ -53,6 +54,8 @@ export class FormComponent implements OnInit {
         this.BuildMarkdown(state);
       }
     });
+
+    this.store.dispatch(Actions.setData({ data: testData }));
   }
 
   BuildMarkdown(state: EditorState) {

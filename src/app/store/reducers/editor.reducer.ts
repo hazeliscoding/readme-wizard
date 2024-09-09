@@ -219,6 +219,10 @@ export const editorReducer = createReducer(
       generatedMarkdown: action.markdown,
       displayMarkdownResult: true,
     });
+  }),
+
+  on(Actions.setData, (state, action): EditorState => {
+    return newState(state, action.data);
   })
 );
 
