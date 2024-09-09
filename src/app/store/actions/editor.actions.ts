@@ -122,3 +122,13 @@ export const modifyDescription = createAction(
 export const displayMarkdownResult = createAction('[Form] Display Markdown');
 
 export const hideMarkdownResult = createAction('[Form] Hide Markdown');
+
+export const generateMarkdown = createAction(
+  '[Form] Generate Markdown',
+  props<{ generate: boolean }>()
+);
+
+export const markdownGenerated = createAction(
+  '[Form] Markdown Generated',
+  props<{ markdown: string }>()
+);

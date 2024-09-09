@@ -8,8 +8,13 @@ import { MarkdownService } from '../../services/markdown.service';
 
 import { LicenseType } from '../../enums/licensetype.enum';
 import { technologies } from '../../../data/technologies';
-import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Observable, Subject } from 'rxjs';
 import { InputInteraction } from '../../interfaces/input-interaction.interface';
+import {
+  editorSelector,
+  selectGeneratingMarkdown,
+} from '../../store/selectors/editor.selectors';
+import { EditorState } from '../../store/reducers/editor.reducer';
 
 @Component({
   selector: 'app-form',
@@ -20,13 +25,19 @@ export class FormComponent implements OnInit {
   technologies = technologies;
   licenses: { name: string; value: string }[] = [];
   protected readonly LicenseType = LicenseType;
+
   public debounceInput$ = new Subject<InputInteraction>();
+  public generating$ = new Observable<boolean>();
+  public state$ = new Observable<EditorState>();
 
   constructor(
     private store: Store<AppState>,
     private mdService: MarkdownService
   ) {
     this.getLicenses();
+
+    this.generating$ = this.store.select(selectGeneratingMarkdown);
+    this.state$ = this.store.select(editorSelector);
   }
 
   ngOnInit(): void {
@@ -35,6 +46,18 @@ export class FormComponent implements OnInit {
       .subscribe((input) => {
         this.processInput(input);
       });
+
+    this.state$.subscribe((state) => {
+      console.log(state);
+      if (state.generateMarkdown) {
+        this.BuildMarkdown(state);
+      }
+    });
+  }
+
+  BuildMarkdown(state: EditorState) {
+    const markdown = this.mdService.Build(state);
+    this.store.dispatch(Actions.markdownGenerated({ markdown }));
   }
 
   getLicenses() {
@@ -210,7 +233,7 @@ export class FormComponent implements OnInit {
   }
 
   generateMarkdown() {
-    this.store.dispatch(Actions.displayMarkdownResult());
+    this.store.dispatch(Actions.generateMarkdown({ generate: true }));
     window.scroll(0, 0);
   }
 }

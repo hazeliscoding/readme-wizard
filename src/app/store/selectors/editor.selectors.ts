@@ -4,12 +4,12 @@ import { AppState } from '../state.interface';
 
 export const editorSelector = (state: AppState) => state.editor;
 
-export const selectEditorDescription = createSelector(
+export const selectGeneratedMarkdown = createSelector(
   editorSelector,
-  (state: EditorState) => state.description
+  (state: EditorState) => state.generatedMarkdown
 );
 
-export const selectDisplayMarkdown = createSelector(
+export const selectGeneratingMarkdown = createSelector(
   editorSelector,
-  (state: EditorState) => state.displayMarkdownResult
+  (state: EditorState) => state.generateMarkdown
 );
