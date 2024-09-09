@@ -32,9 +32,7 @@ export class MarkdownService {
     const images = [{ url: 'https://placehold.co/600x400', alt: 'Image 1' }];
 
     const contributionSection = {
-      title: 'Contributing',
-      description:
-        'We welcome contributions from the community! If you would like to contribute to this project, please follow the guidelines below.',
+      add: true,
       contributionGuidelinesLink:
         'https://github.com/johndoe/my-awesome-repo/blob/main/CONTRIBUTING.md',
     };
@@ -165,6 +163,7 @@ export class MarkdownService {
       this.generateGitHubBadges({
         username: 'John Doe',
         repo: 'my-awesome-repo',
+        badges: true,
       }),
       this.generateIntroductionSection(
         'My package',
@@ -454,8 +453,8 @@ This project was created by ${
   }
 
   generateContributionSection(contribution: ContributionOptions): string {
-    const { title, description, contributionGuidelinesLink } = contribution;
-    let contributionSection = `## ${title}\n\n${description}\n`;
+    const { contributionGuidelinesLink } = contribution;
+    let contributionSection = `## Contributing\n\nWe welcome contributions from the community! If you would like to contribute to this project, please follow the guidelines below.\n`;
 
     // Generic contribution information
     contributionSection += `\n### Ways to Contribute\n\n- Report bugs or issues by opening a new issue on our GitHub repository.

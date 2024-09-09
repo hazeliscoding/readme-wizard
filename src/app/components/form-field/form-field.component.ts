@@ -24,7 +24,9 @@ export class FormFieldComponent {
   constructor() {}
 
   inputChange(e: Event) {
-    this.change.emit(e);
+    e.stopPropagation();
+    e.preventDefault();
+    
     this.valueChange.emit((e.target as HTMLInputElement).value);
   }
 }
