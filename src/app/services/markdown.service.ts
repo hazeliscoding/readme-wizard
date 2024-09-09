@@ -90,10 +90,16 @@ export class MarkdownService {
       //     defaultValue: 'false',
       //   },
       // ]),
-      this.generateSetupTitle(state),
-      this.generateInstallationSection(state.installSteps),
-      this.generateUsageSection(state.usageSteps),
-      this.generateParametersTable(state.configuration.parameters),
+      ...(state.installSteps.length > 0 ||
+      state.usageSteps.length > 0 ||
+      state.configuration.parameters.length > 0
+        ? [
+            this.generateTitle('Setup'),
+            this.generateInstallationSection(state.installSteps),
+            this.generateUsageSection(state.usageSteps),
+            this.generateParametersTable(state.configuration.parameters),
+          ]
+        : []),
       state.acknowledgments.length > 0 &&
         this.generateAcknowledgementsSection(state.acknowledgments),
       state.contribution.add &&
@@ -369,6 +375,10 @@ export class MarkdownService {
       default?: string;
     }[]
   ): string {
+    if (properties.length === 0) {
+      return '';
+    }
+
     const tableHeader =
       '| Field Name | Description | Default Value |\n| --- | --- | --- |';
     let tableBody = '';
@@ -655,6 +665,10 @@ This project was created by ${
     return featuresSection;
   }
 
+  generateTitle(titleName: string) {
+    return `## ${titleName}`;
+  }
+
   generateIntroductionSection(
     title: string,
     description: string,
@@ -664,7 +678,7 @@ This project was created by ${
     return `
 <div align="center">
 
-<a href="${url}" target="_blank" title="Go to the ${url} website"><img width="196px" alt="gowebly logo" src="${imgUrl}"></a>
+<a href="${url}" target="_blank" title="Go to ${url} website"><img width="196px" alt="${title}" src="${imgUrl}"></a>
 
 <a name="readme-top"></a>
 
@@ -773,6 +787,10 @@ ${description}
   }
 
   generateInstallationSection(steps: string[]): string {
+    if (steps.length === 0) {
+      return '';
+    }
+
     let installSection = `### Installation\n\nTo install this project, follow these steps:\n\n`;
 
     steps.forEach((step, index) => {
@@ -783,6 +801,10 @@ ${description}
   }
 
   generateUsageSection(steps: string[]): string {
+    if (steps.length === 0) {
+      return '';
+    }
+
     let usageSection = `### Usage\n\nAfter installation, you can use the project by following these steps:\n\n`;
 
     steps.forEach((step, index) => {
