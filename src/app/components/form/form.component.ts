@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   technologies = technologies;
   licenses: { name: string; value: string }[] = [];
   protected readonly LicenseType = LicenseType;
-  private debounceInput$ = new Subject<InputInteraction>();
+  public debounceInput$ = new Subject<InputInteraction>();
 
   constructor(
     private store: Store<AppState>,

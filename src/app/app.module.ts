@@ -22,6 +22,7 @@ import { FormCheckboxComponent } from './components/form-checkbox/form-checkbox.
 import { FormFieldComponent } from './components/form-field/form-field.component';
 import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { SectionTitleComponent } from './components/section-title/section-title.component';
+import { MultiFieldComponent } from './components/multi-field/multi-field.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SectionTitleComponent } from './components/section-title/section-title.
     FormFieldComponent,
     FormRadioComponent,
     SectionTitleComponent,
+    MultiFieldComponent,
   ],
   imports: [
     BrowserModule,
