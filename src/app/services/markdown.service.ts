@@ -109,7 +109,7 @@ export class MarkdownService {
     let result = '';
 
     for (const section of sections) {
-      result += `${section}\n\n`;
+      result += section ? `${section}\n\n` : '';
     }
 
     result = this.generateTableOfContentsFromMarkdown(result);
@@ -863,6 +863,6 @@ ${description}
   }
 
   generateWatermark() {
-    return '---\n <div align="center">Built with ❤️ with <a href="https://github.com/hazeliscoding/readme-wizard">Document My Project</a></div>';
+    return '---\n <div align="center">Built with ❤️ with <a href="https://github.com/hazeliscoding/readme-wizard">ReadMe Wizard</a></div>';
   }
 }

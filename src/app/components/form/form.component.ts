@@ -55,7 +55,7 @@ export class FormComponent implements OnInit {
       }
     });
 
-    this.store.dispatch(Actions.setData({ data: testData }));
+    // this.store.dispatch(Actions.setData({ data: testData }));
   }
 
   BuildMarkdown(state: EditorState) {
@@ -119,6 +119,14 @@ export class FormComponent implements OnInit {
         });
 
         this.store.dispatch(Actions.modifyFeatures({ features: features }));
+        break;
+
+      case 'installation':
+        this.store.dispatch(Actions.modifyInstallation({ steps: input.value }));
+        break;
+
+      case 'usage':
+        this.store.dispatch(Actions.modifyUsage({ steps: input.value }));
         break;
 
       case 'repository-url':
