@@ -12,7 +12,8 @@ export class FormRadioComponent {
   @Output()
   change = new EventEmitter<Event>();
 
-  value = '';
+  @Input()
+  value: string | undefined = '';
 
   constructor() {}
 

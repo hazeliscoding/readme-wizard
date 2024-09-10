@@ -129,6 +129,7 @@
     #techStack
     (change)="inputChange('tech-stack', $event.target)"
     [title]="'Add Tech Stack'"
+    [value]="(stack$ | async)?.length! > 0"
   ></app-form-checkbox>
 
   <div [ngClass]="techStack.value ? '' : 'hidden'" class="flex flex-col">
