@@ -19,7 +19,7 @@ export const testData: EditorState = {
     'Open the project directory in your code editor',
     'Run `npm start` to start the development server',
   ],
-  contentTable: true,
+  contentTable: false,
   github: {
     username: 'hazeliscoding',
     repo: 'readme-wizard',

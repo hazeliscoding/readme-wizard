@@ -181,6 +181,7 @@
       #contributionCheckbox
       (change)="inputChange('contribution', $event.target)"
       [title]="'Add Contribution info'"
+      [value]="(contribution$ | async)?.add"
     ></app-form-checkbox>
     <app-form-field
       (change)="inputChange('contribution-guideline', $event.target)"
@@ -228,6 +229,7 @@
     #licenseCheckbox
     (change)="inputChange('license', $event.target)"
     [title]="'Add License'"
+    [value]="(license$ | async) !== null"
   ></app-form-checkbox>
 
   <app-form-radio
@@ -235,6 +237,7 @@
     (change)="inputChange('licenseType', $event.target)"
     [ngClass]="{ hidden: !licenseCheckbox.value }"
     [options]="licenses"
+    [value]="(license$ | async)?.type"
   ></app-form-radio>
 
   <app-form-field
