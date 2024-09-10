@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { UtilsService } from '../../services/utils.service';
 import { ToastService } from '../../services/toast.service';
@@ -9,7 +9,11 @@ import { ToastService } from '../../services/toast.service';
   styleUrl: './md-code-snippet.component.css',
 })
 export class MdCodeSnippetComponent {
-  @Input() text: string = '';
+  @Input() 
+  text: string = '';
+
+  @Output()
+  updateFileGenerated = new EventEmitter();
 
   tabEnabled: 'preview' | 'raw' = 'preview';
   theme: 'dark' | 'light' = 'light';
@@ -35,5 +39,9 @@ export class MdCodeSnippetComponent {
   downloadReadme() {
     this.utilsService.saveTextAsFile(this.text);
     this.toastService.success('File Downloaded!');
+  }
+
+  updateFileRequest() {
+    this.updateFileGenerated.emit();
   }
 }
