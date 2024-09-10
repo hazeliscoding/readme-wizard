@@ -231,13 +231,6 @@ export const technologies: any[] = [
     mainColor: '#0071B5',
   },
   {
-    name: 'Meteor',
-    value: 'meteor',
-    description:
-      'An open-source platform for building scalable real-time web applications',
-    mainColor: '#DE4F4F',
-  },
-  {
     name: 'Astro',
     value: 'astro',
     description:

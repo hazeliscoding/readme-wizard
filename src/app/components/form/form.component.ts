@@ -72,7 +72,7 @@ export class FormComponent implements OnInit {
   public logo$ = new Observable<string>();
   public mainImage$ = new Observable<string>();
   public screenshots$ = new Observable<string[]>();
-  public stack$ = new Observable<TechnologyOptions[]>();
+  public stack$ = new Observable<string[]>();
   public installSteps$ = new Observable<string[]>();
   public usageSteps$ = new Observable<string[]>();
   public parameters$: Observable<

@@ -55,10 +55,10 @@ export const testData: EditorState = {
   ],
   technologies: [
     {
-      name: 'Angular',
-      value: 'angular',
+      name: 'Ember.js',
+      value: 'ember',
       description: 'A front-end web application framework',
-      mainColor: '#DD0031',
+      mainColor: '#E04E39',
     },
     {
       name: 'Vue.js',
@@ -68,11 +68,12 @@ export const testData: EditorState = {
       mainColor: '#41B883',
     },
     {
-      name: 'Ember.js',
-      value: 'ember',
+      name: 'Angular',
+      value: 'angular',
       description: 'A front-end web application framework',
-      mainColor: '#E04E39',
+      mainColor: '#DD0031',
     },
+
     {
       name: 'Svelte',
       value: 'svelte',

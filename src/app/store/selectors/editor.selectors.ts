@@ -80,7 +80,7 @@ export const selectScreenshots = createSelector(
 
 export const selectStackTech = createSelector(
   editorSelector,
-  (state: EditorState) => state.technologies
+  (state: EditorState) => state.technologies.map((tech) => tech.value)
 );
 
 export const selectInstallSteps = createSelector(
