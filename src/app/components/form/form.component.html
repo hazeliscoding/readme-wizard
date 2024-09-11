@@ -1,4 +1,4 @@
-<div class="p-4 overflow-auto">
+<div class="px-4 pb-4 overflow-auto">
   <app-section-title [iconType]="'info'" [title]="'About'"></app-section-title>
   <small>Information about your project</small>
 
@@ -245,8 +245,17 @@
     <h6>Github</h6>
     <app-form-field
       (change)="inputChange('author-github', $event.target)"
-      [placeholder]="'Author Username'"
+      [placeholder]="'Author Github Username'"
       [value]="githubUsername$ | async"
+    ></app-form-field>
+  </div>
+
+  <div class="flex flex-col">
+    <h6>LinkedIn</h6>
+    <app-form-field
+      (change)="inputChange('author-linkedin', $event.target)"
+      [placeholder]="'Author LinkedIn username'"
+      [value]="linkedinUsername$ | async"
     ></app-form-field>
   </div>
 

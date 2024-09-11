@@ -11,6 +11,7 @@ import { ToastService } from './services/toast.service';
 
 import { readmeDemo } from '../data/data';
 import { Actions } from './store/actions/action-types';
+import { testData } from '../data/test';
 
 @Component({
   selector: 'app-root',
@@ -38,5 +39,11 @@ export class AppComponent implements OnInit {
   generateMarkdown() {
     this.store.dispatch(Actions.generateMarkdown({ generate: true }));
     window.scroll(0, 0);
+  }
+
+  loadSampleData() {
+    this.store.dispatch(Actions.setData({ data: testData }));
+    this.generateMarkdown();
+    this.toastService.success('Sample data loaded');
   }
 }

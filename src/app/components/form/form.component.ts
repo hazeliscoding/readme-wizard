@@ -130,7 +130,7 @@ export class FormComponent implements OnInit {
     this.contributors$ = this.store.select(selectContributors);
     this.authorName$ = this.store.select(selectAuthorName);
     this.githubUsername$ = this.store.select(selectAuthorGithubUsername);
-    this.linkedinUsername$ = this.store.select(selectAuthorLinkedinUsername)''
+    this.linkedinUsername$ = this.store.select(selectAuthorLinkedinUsername);
     this.license$ = this.store.select(selectLicense);
   }
 
