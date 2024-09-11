@@ -145,7 +145,7 @@ export class FormComponent implements OnInit {
       }
     });
 
-    this.store.dispatch(Actions.setData({ data: testData }));
+    // this.store.dispatch(Actions.setData({ data: testData }));
   }
 
   BuildMarkdown(state: EditorState) {

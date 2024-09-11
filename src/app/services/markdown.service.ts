@@ -34,7 +34,7 @@ export class MarkdownService {
       this.generateIntroductionSection(
         state.title,
         state.shortDescription,
-        'https//:url.com',
+        '',
         state.logoUrl
       ),
       state.npm.badges &&
@@ -85,8 +85,10 @@ export class MarkdownService {
           state.contributors,
           state.sectionIcons
         ),
-      this.generateAuthorSection(state.author, state.sectionIcons),
-      this.generateLicenseSection(state.license, state.sectionIcons),
+      state.author.name.length > 0 &&
+        this.generateAuthorSection(state.author, state.sectionIcons),
+      state.license.type &&
+        this.generateLicenseSection(state.license, state.sectionIcons),
       state.backToTop && this.generateBackToTop(state.sectionIcons),
       this.generateWatermark(),
     ];
@@ -699,7 +701,9 @@ This project was created by ${
     return `
 <div align="center">
 
-<a href="${url}" target="_blank" title="Go to ${url} website"><img width="196px" alt="${title}" src="${imgUrl}"></a>
+${imgUrl !== '' ? `<a href="${url}" target="_blank" title="Go to ${url} website">
+<img width="196px" alt="${title}" src="${imgUrl}">
+</a>` : ''}
 
 # ${title}
 

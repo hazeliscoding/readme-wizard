@@ -40,8 +40,6 @@ export class MultiFieldComponent {
         this.entries.push(this.generateFields(Object.values(value)));
       }
     });
-
-    console.log(this.entries);
   }
 
   addEntry() {
