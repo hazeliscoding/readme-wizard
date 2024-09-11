@@ -20,6 +20,7 @@ import {
   editorSelector,
   selectAcknowledgment,
   selectAuthorGithubUsername,
+  selectAuthorLinkedinUsername,
   selectAuthorName,
   selectBackToTop,
   selectContentTable,
@@ -94,6 +95,7 @@ export class FormComponent implements OnInit {
   public contributors$: Observable<ContributorOptions[]>;
   public authorName$: Observable<string>;
   public githubUsername$: Observable<string>;
+  public linkedinUsername$: Observable<string>;
   public license$: Observable<LicenseOptions>;
 
   constructor(
@@ -128,6 +130,7 @@ export class FormComponent implements OnInit {
     this.contributors$ = this.store.select(selectContributors);
     this.authorName$ = this.store.select(selectAuthorName);
     this.githubUsername$ = this.store.select(selectAuthorGithubUsername);
+    this.linkedinUsername$ = this.store.select(selectAuthorLinkedinUsername)''
     this.license$ = this.store.select(selectLicense);
   }
 
@@ -144,8 +147,6 @@ export class FormComponent implements OnInit {
         this.BuildMarkdown(state);
       }
     });
-
-    // this.store.dispatch(Actions.setData({ data: testData }));
   }
 
   BuildMarkdown(state: EditorState) {
