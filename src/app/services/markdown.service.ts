@@ -24,6 +24,7 @@ export class MarkdownService {
 
   Build(state: EditorState) {
     const sections = [
+      this.generateReadmeInfo(),
       state.github.badges &&
         this.generateGitHubBadges({
           username: state.github.username,
@@ -373,6 +374,18 @@ export class MarkdownService {
       : '';
   }
 
+  generateReadmeInfo() {
+    const info = `<a name="readme-top"></a>
+<!--
+*** Thanks for using ReadMe Wizard. (https://github.com/hazeliscoding/readme-wizard) 
+*** If you have a suggestion that would make this better, please fork  
+*** the repo and create a pull request or simply open an issue.
+*** Don't forget to give the project a star!
+-->`;
+
+    return info;
+  }
+
   generateTableContentPlaceholder() {
     return this.TABLE_CONTENT_PLACEHOLDER;
   }
@@ -508,8 +521,7 @@ This project was created by ${
       | 'plastic'
       | 'for-the-badge' = 'for-the-badge'
   ): string {
-    const badges = `
-        <p align="center"><a href="https://github.com/${github.username}/${github.repo}/graphs/contributors"><img src="https://img.shields.io/github/contributors/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Contributors"></a>
+    const badges = `<p align="center"><a href="https://github.com/${github.username}/${github.repo}/graphs/contributors"><img src="https://img.shields.io/github/contributors/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Contributors"></a>
         <a href="https://github.com/${github.username}/${github.repo}/network/members"><img src="https://img.shields.io/github/forks/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Forks"></a>
         <a href="https://github.com/${github.username}/${github.repo}/stargazers"><img src="https://img.shields.io/github/stars/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Stargazers"></a>
         <a href="https://github.com/${github.username}/${github.repo}/issues"><img src="https://img.shields.io/github/issues/${github.username}/${github.repo}.svg?style=${badgeStyle}" alt="Issues"></a></p><br/>`;
