@@ -277,6 +277,23 @@
     [placeholder]="'License...'"
     [textarea]="true"
   ></app-form-field>
+
+  <app-section-title [iconType]="'adjustment'" [title]="'Options'"></app-section-title>
+  <small>Optional configuration for your readme file</small>
+
+  <app-form-checkbox
+      #backToTopCheckbox
+      (change)="inputChange('back-to-top', $event.target)"
+      [title]="'Add [Back to top]'"
+      [value]="(backToTop$ | async)"
+  ></app-form-checkbox>
+
+  <app-form-checkbox
+      #sectionIconsCheckbox
+      (change)="inputChange('section-icons', $event.target)"
+      [title]="'Add section Icons'"
+      [value]="(sectionIcons$ | async)"
+  ></app-form-checkbox>
 </div>
 <button
   (click)="generate()"

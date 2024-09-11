@@ -134,6 +134,16 @@ export const displayMarkdownResult = createAction('[Form] Display Markdown');
 
 export const hideMarkdownResult = createAction('[Form] Hide Markdown');
 
+export const toggleBackToTop = createAction(
+  '[Form] Toggle Back to top',
+  props<{ backToTop: boolean }>()
+);
+
+export const toggleSectionIcons = createAction(
+  '[Form] Toggle Section Icons',
+  props<{ sectionIcons: boolean }>()
+);
+
 export const generateMarkdown = createAction(
   '[Form] Generate Markdown',
   props<{ generate: boolean }>()

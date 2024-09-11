@@ -57,63 +57,37 @@ export class MarkdownService {
         ]),
       this.generateTableContentPlaceholder(),
       state.description &&
-        this.generateDescription([state.description], state.titleIcons),
+        this.generateDescription([state.description], state.sectionIcons),
       state.images.length > 0 &&
-        this.generateShowcaseSection(state.images, state.titleIcons),
+        this.generateShowcaseSection(state.images, state.sectionIcons),
       state.features.length > 0 &&
-        this.generateFeaturesSection(state.features, state.titleIcons),
+        this.generateFeaturesSection(state.features, state.sectionIcons),
       state.technologies.length > 0 &&
-        this.generateTechStackSection(state.technologies, state.titleIcons),
-      // this.generateInstallSection({
-      //   projectName: 'My Awesome Project',
-      //   packageManager: 'npm',
-      //   dependencies: ['react', 'react-dom', 'axios'],
-      //   devDependencies: ['eslint', 'prettier'],
-      //   installationSteps: ['Run the development server with `npm run dev`'],
-      //   includeSetup: true,
-      //   setupSteps: [
-      //     'Install Node.js v12 or later',
-      //     'Install a code editor (e.g., Visual Studio Code)',
-      //   ],
-      //   includeUsage: true,
-      //   usageSteps: [
-      //     'Open the project directory in your code editor',
-      //     'Run `npm start` to start the development server',
-      //   ],
-      // }),
-      // this.generateParametersTable([
-      //   {
-      //     fieldName: 'name',
-      //     description: 'Name of the user',
-      //     defaultValue: 'John Doe',
-      //   },
-      //   { fieldName: 'age', description: 'Age of the user' },
-      //   {
-      //     fieldName: 'isAdmin',
-      //     description: 'Whether the user is an admin or not',
-      //     defaultValue: 'false',
-      //   },
-      // ]),
+        this.generateTechStackSection(state.technologies, state.sectionIcons),
       ...(state.installSteps.length > 0 ||
       state.usageSteps.length > 0 ||
       state.configuration.parameters.length > 0
         ? [
-            this.generateTitle(`${state.titleIcons ? '⚙ ' : ''}️Setup`),
-
+            this.generateTitle(`${state.sectionIcons ? '⚙ ' : ''}️Setup`),
             this.generateInstallationSection(state.installSteps),
             this.generateUsageSection(state.usageSteps),
             this.generateParametersTable(state.configuration.parameters),
           ]
         : []),
       state.acknowledgments.length > 0 &&
-        this.generateAcknowledgementsSection(state.acknowledgments),
+        this.generateAcknowledgementsSection(
+          state.acknowledgments,
+          state.sectionIcons
+        ),
       state.contribution.add &&
         this.generateContributionSection(
           state.contribution,
-          state.contributors
+          state.contributors,
+          state.sectionIcons
         ),
-      this.generateAuthorSection(state.author),
-      this.generateLicenseSection(state.license),
+      this.generateAuthorSection(state.author, state.sectionIcons),
+      this.generateLicenseSection(state.license, state.sectionIcons),
+      state.backToTop && this.generateBackToTop(state.sectionIcons),
       this.generateWatermark(),
     ];
 
@@ -650,6 +624,12 @@ This project was created by ${
     return acknowledgementsSectionContent;
   }
 
+  generateBackToTop(addIcon = true) {
+    return `<p align="right"><a href="#readme-top">${
+      addIcon ? 'Top ⬆️' : '(Back to top)'
+    }</a></p>`;
+  }
+
   generateLicenseSection(
     licenseSection: LicenseOptions,
     addTitleIcons = false
@@ -720,8 +700,6 @@ This project was created by ${
 <div align="center">
 
 <a href="${url}" target="_blank" title="Go to ${url} website"><img width="196px" alt="${title}" src="${imgUrl}"></a>
-
-<a name="readme-top"></a>
 
 # ${title}
 

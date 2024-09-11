@@ -63,6 +63,16 @@ export const selectNpmBadges = createSelector(
   (state: EditorState) => state.npm.badges
 );
 
+export const selectBackToTop = createSelector(
+  editorSelector,
+  (state: EditorState) => state.backToTop
+);
+
+export const selectSectionIcons = createSelector(
+  editorSelector,
+  (state: EditorState) => state.sectionIcons
+);
+
 export const selectLogo = createSelector(
   editorSelector,
   (state: EditorState) => state.logoUrl

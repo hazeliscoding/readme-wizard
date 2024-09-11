@@ -21,6 +21,7 @@ import {
   selectAcknowledgment,
   selectAuthorGithubUsername,
   selectAuthorName,
+  selectBackToTop,
   selectContentTable,
   selectContribution,
   selectContributors,
@@ -38,6 +39,7 @@ import {
   selectRepository,
   selectRepositoryBadges,
   selectScreenshots,
+  selectSectionIcons,
   selectShortDescription,
   selectStackTech,
   selectTitle,
@@ -72,6 +74,8 @@ export class FormComponent implements OnInit {
   public repositoryBadges$ = new Observable<boolean>();
   public npmUrl$ = new Observable<string>();
   public npmBadges$ = new Observable<boolean>();
+  public backToTop$ = new Observable<boolean>();
+  public sectionIcons$ = new Observable<boolean>();
   public logo$ = new Observable<string>();
   public mainImage$ = new Observable<string>();
   public screenshots$ = new Observable<string[]>();
@@ -110,6 +114,8 @@ export class FormComponent implements OnInit {
     this.repositoryBadges$ = this.store.select(selectRepositoryBadges);
     this.npmUrl$ = this.store.select(selectNpmPackage);
     this.npmBadges$ = this.store.select(selectNpmBadges);
+    this.backToTop$ = this.store.select(selectBackToTop);
+    this.sectionIcons$ = this.store.select(selectSectionIcons);
     this.logo$ = this.store.select(selectLogo);
     this.mainImage$ = this.store.select(selectMainImage);
     this.screenshots$ = this.store.select(selectScreenshots);
@@ -192,6 +198,18 @@ export class FormComponent implements OnInit {
       case 'navigation-links':
         this.store.dispatch(
           Actions.modifyNavigation({ navigation: input.value })
+        );
+        break;
+
+      case 'section-icons':
+        this.store.dispatch(
+          Actions.toggleSectionIcons({ sectionIcons: input.value })
+        );
+        break;
+
+      case 'back-to-top':
+        this.store.dispatch(
+          Actions.toggleBackToTop({ backToTop: input.value })
         );
         break;
 

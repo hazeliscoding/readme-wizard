@@ -6,8 +6,9 @@ export const testData: EditorState = {
   shortDescription:
     'Fed up with manually creating README files? Try our web app that simplifies the documentation process for GitHub projects. With our user-friendly platform, you can quickly generate detailed and visually appealing Markdown documentation in just seconds.',
   description: '',
-  navigationLinks: true,
-  titleIcons: true,
+  navigationLinks: false,
+  sectionIcons: false,
+  backToTop: true,
   installSteps: [
     'Install Node.js v12 or later',
     'Install a code editor (e.g., Visual Studio Code)',
