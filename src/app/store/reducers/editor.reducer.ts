@@ -19,6 +19,7 @@ export interface EditorState {
   shortDescription: string;
   description: string;
   github: GitHubOptions;
+  titleIcons: boolean;
   npm: NPMOptions;
   logoUrl: string;
   navigationLinks: boolean;
@@ -47,6 +48,7 @@ const initialState: EditorState = {
   shortDescription: 'string',
   description: '',
   navigationLinks: false,
+  titleIcons: false,
   contentTable: false,
   github: {
     username: '',
