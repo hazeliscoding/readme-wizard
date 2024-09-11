@@ -25,6 +25,7 @@ import { SectionTitleComponent } from './components/section-title/section-title.
 import { MultiFieldComponent } from './components/multi-field/multi-field.component';
 import { LogPipe } from './pipes/log.pipe';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     MultiFieldComponent,
     LogPipe,
     SvgIconComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
