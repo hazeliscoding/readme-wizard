@@ -1,5 +1,5 @@
 <div class="p-4 overflow-auto">
-  <app-section-title [title]="'About'"></app-section-title>
+  <app-section-title [iconType]="'info'" [title]="'About'"></app-section-title>
   <small>Information about your project</small>
 
   <div class="flex flex-col">
@@ -31,7 +31,10 @@
     ></app-form-field>
   </div>
 
-  <app-section-title [title]="'Navigation'"></app-section-title>
+  <app-section-title
+    [iconType]="'list'"
+    [title]="'Navigation'"
+  ></app-section-title>
   <small>Documentation navigation</small>
 
   <app-form-checkbox
@@ -46,14 +49,20 @@
     [value]="navigationLinks$ | async"
   ></app-form-checkbox>
 
-  <app-section-title [title]="'Features'"></app-section-title>
+  <app-section-title
+    [iconType]="'star'"
+    [title]="'Features'"
+  ></app-section-title>
   <app-multi-field
     (valueChange)="debounceInput$.next({ type: 'features', value: $event })"
     [fields]="['Name', 'Feature description']"
     [value]="features$ | async"
   ></app-multi-field>
 
-  <app-section-title [title]="'Repositories'"></app-section-title>
+  <app-section-title
+    [iconType]="'github'"
+    [title]="'Repositories'"
+  ></app-section-title>
   <small>Source code information</small>
 
   <div class="flex flex-col">
@@ -92,7 +101,10 @@
     [value]="npmBadges$ | async"
   ></app-form-checkbox>
 
-  <app-section-title [title]="'Images'"></app-section-title>
+  <app-section-title
+    [iconType]="'image'"
+    [title]="'Images'"
+  ></app-section-title>
   <small>Project showcase</small>
 
   <div class="flex flex-col">
@@ -123,7 +135,10 @@
     ></app-form-field>
   </div>
 
-  <app-section-title [title]="'Technologies'"></app-section-title>
+  <app-section-title
+    [iconType]="'layers'"
+    [title]="'Technologies'"
+  ></app-section-title>
 
   <app-form-checkbox
     #techStack
@@ -141,7 +156,10 @@
     ></app-multi-picker>
   </div>
 
-  <app-section-title [title]="'Setup'"></app-section-title>
+  <app-section-title
+    [iconType]="'rect-list'"
+    [title]="'Setup'"
+  ></app-section-title>
   <small>Add instructions to run the project...</small>
 
   <h6>Installation</h6>
@@ -167,14 +185,20 @@
     [value]="parameters$ | async"
   ></app-multi-field>
 
-  <app-section-title [title]="'Acknowledgements'"></app-section-title>
+  <app-section-title
+    [iconType]="'award'"
+    [title]="'Acknowledgements'"
+  ></app-section-title>
   <app-multi-field
     (valueChange)="debounceInput$.next({ type: 'acknowledge', value: $event })"
     [fields]="['Name', 'Description', 'Url']"
     [value]="acknowledgements$ | async"
   ></app-multi-field>
 
-  <app-section-title [title]="'Contributions'"></app-section-title>
+  <app-section-title
+    [iconType]="'user-group'"
+    [title]="'Contributions'"
+  ></app-section-title>
   <small>Who helped build the project</small>
 
   <div class="flex flex-col">
@@ -202,7 +226,10 @@
     ></app-multi-field>
   </div>
 
-  <app-section-title [title]="'Author'"></app-section-title>
+  <app-section-title
+    [iconType]="'user-circle'"
+    [title]="'Author'"
+  ></app-section-title>
   <small>Who is the author</small>
 
   <div class="flex flex-col">
@@ -223,7 +250,10 @@
     ></app-form-field>
   </div>
 
-  <app-section-title [title]="'License'"></app-section-title>
+  <app-section-title
+    [iconType]="'book'"
+    [title]="'License'"
+  ></app-section-title>
   <small>Add your project license</small>
 
   <app-form-checkbox
