@@ -10,6 +10,7 @@ import { MarkdownService } from './services/markdown.service';
 import { ToastService } from './services/toast.service';
 
 import { readmeDemo } from '../data/data';
+import { Actions } from './store/actions/action-types';
 
 @Component({
   selector: 'app-root',
@@ -32,5 +33,10 @@ export class AppComponent implements OnInit {
     initFlowbite();
 
     // this.markdownData = this.markdownService.test();
+  }
+
+  generateMarkdown() {
+    this.store.dispatch(Actions.generateMarkdown({ generate: true }));
+    window.scroll(0, 0);
   }
 }

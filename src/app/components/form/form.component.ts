@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, Observable, Subject } from 'rxjs';
 
@@ -52,6 +52,9 @@ import { testData } from '../../../data/test';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
+  @Output()
+  generateMarkdown = new EventEmitter();
+
   technologies = technologies;
   licenses: { name: string; value: string }[] = [];
   protected readonly LicenseType = LicenseType;
@@ -324,8 +327,7 @@ export class FormComponent implements OnInit {
     this.processInput({ type: 'technologies', value: technologies });
   }
 
-  generateMarkdown() {
-    this.store.dispatch(Actions.generateMarkdown({ generate: true }));
-    window.scroll(0, 0);
+  generate() {
+    this.generateMarkdown.emit();
   }
 }
