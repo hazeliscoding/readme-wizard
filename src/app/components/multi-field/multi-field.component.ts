@@ -31,9 +31,7 @@ export class MultiFieldComponent {
       if (typeof value === 'string') {
         this.entries.push(this.generateFields([value]));
       } else if (typeof value === 'object') {
-        Object.keys(value).forEach((key) => {
-          this.entries.push(this.generateFields([value[key], value[key]]));
-        });
+        this.entries.push(this.generateFields(Object.values(value)));
       }
     });
 
