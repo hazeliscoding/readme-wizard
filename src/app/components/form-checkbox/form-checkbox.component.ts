@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -11,6 +12,7 @@ import { UtilsService } from '../../services/utils.service';
   selector: 'app-form-checkbox',
   templateUrl: './form-checkbox.component.html',
   styleUrls: ['./form-checkbox.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormCheckboxComponent implements AfterViewInit {
   @Input()

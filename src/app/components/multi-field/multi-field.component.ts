@@ -1,11 +1,17 @@
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { UtilsService } from '../../services/utils.service';
-import { FeatureOptions } from '../../interfaces/feature-options.interface';
 
 @Component({
   selector: 'app-multi-field',
   templateUrl: './multi-field.component.html',
   styleUrl: './multi-field.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiFieldComponent {
   @Input()
