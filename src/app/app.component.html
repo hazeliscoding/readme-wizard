@@ -1,25 +1,29 @@
 <app-background></app-background>
-
 <app-header></app-header>
-<div
-  class="absolute flex flex-col items-center justify-center w-full gap-12 lg:flex-row lg:items-start"
->
-  <main
-    [ngClass]="{ 'max-w-96': generatedMarkdown$ | async }"
-    class="block w-full max-w-[700px]"
+<div class="relative flex">
+  <div
+    class="flex flex-col items-center justify-center w-full gap-12 lg:flex-row lg:items-start"
   >
-    <app-form (generateMarkdown)="generateMarkdown()"></app-form>
-  </main>
-  <aside
-    *ngIf="generatedMarkdown$ | async as markdown"
-    class="max-h-full w-full max-w-[800px] top-9 block lg:sticky overflow-hidden"
-  >
-    <app-md-code-snippet
-      (updateFileGenerated)="generateMarkdown()"
-      [text]="markdown"
-    ></app-md-code-snippet>
-  </aside>
+    <main
+      [ngClass]="{ 'max-w-96': generatedMarkdown$ | async }"
+      class="block w-full max-w-[700px]"
+    >
+      <app-form (generateMarkdown)="generateMarkdown()"></app-form>
+    </main>
+    <aside
+      *ngIf="generatedMarkdown$ | async as markdown"
+      class="max-h-full w-full max-w-[800px] top-9 block lg:sticky overflow-hidden"
+    >
+      <app-md-code-snippet
+        (updateFileGenerated)="generateMarkdown()"
+        [text]="markdown"
+      ></app-md-code-snippet>
+    </aside>
+  </div>
+  <app-footer class="absolute bottom-0 w-full isolate"></app-footer>
 </div>
+
+<app-repo class="fixed top-0 right-0"></app-repo>
 
 <app-toast
   *ngFor="let toast of toastService.toasts | async"
