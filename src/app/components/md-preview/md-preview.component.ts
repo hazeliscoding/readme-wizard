@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'app-md-preview',
   templateUrl: './md-preview.component.html',
   styleUrl: './md-preview.component.css',
+  standalone: false
 })
 export class MdPreviewComponent {
   @Input() text!: string;

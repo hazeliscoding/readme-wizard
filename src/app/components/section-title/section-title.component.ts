@@ -6,6 +6,7 @@ import { IconType } from '../svg-icon/svg-icon.component';
   templateUrl: './section-title.component.html',
   styleUrls: ['./section-title.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class SectionTitleComponent {
   @Input()

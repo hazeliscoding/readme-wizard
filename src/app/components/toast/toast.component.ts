@@ -22,6 +22,7 @@ import { Toast } from '../../models/toast.model';
       ]),
     ]),
   ],
+  standalone: false
 })
 export class ToastComponent {
   @Input() toast!: Toast;

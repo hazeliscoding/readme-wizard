@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './background.component.html',
   styleUrl: './background.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class BackgroundComponent {
 

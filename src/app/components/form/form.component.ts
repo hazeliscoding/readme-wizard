@@ -53,6 +53,7 @@ import { testData } from '../../../data/test';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
+  standalone: false
 })
 export class FormComponent implements OnInit {
   @Output()

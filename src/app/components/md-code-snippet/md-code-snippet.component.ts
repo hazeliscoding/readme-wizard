@@ -7,6 +7,7 @@ import { ToastService } from '../../services/toast.service';
   selector: 'app-md-code-snippet',
   templateUrl: './md-code-snippet.component.html',
   styleUrl: './md-code-snippet.component.css',
+  standalone: false
 })
 export class MdCodeSnippetComponent {
   @Input() 

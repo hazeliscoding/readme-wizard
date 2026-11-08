@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   templateUrl: './svg-icon.component.html',
   styleUrl: './svg-icon.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class SvgIconComponent {
   @Input()

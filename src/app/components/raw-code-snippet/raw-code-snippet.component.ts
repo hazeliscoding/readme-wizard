@@ -5,6 +5,7 @@ import { UtilsService } from '../../services/utils.service';
   selector: 'app-raw-code-snippet',
   templateUrl: './raw-code-snippet.component.html',
   styleUrl: './raw-code-snippet.component.css',
+  standalone: false
 })
 export class RawCodeSnippetComponent {
   @Input() code: string = '';

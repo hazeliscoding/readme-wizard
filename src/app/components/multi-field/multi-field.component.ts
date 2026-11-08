@@ -12,6 +12,7 @@ import { UtilsService } from '../../services/utils.service';
   templateUrl: './multi-field.component.html',
   styleUrl: './multi-field.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class MultiFieldComponent {
   @Input()

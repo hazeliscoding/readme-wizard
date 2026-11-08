@@ -20,6 +20,7 @@ export interface PickerItem {
   selector: 'app-multi-picker',
   templateUrl: './multi-picker.component.html',
   styleUrls: ['./multi-picker.component.css'],
+  standalone: false
 })
 export class MultiPickerComponent implements OnInit, OnChanges {
   @Input()
