@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { UtilsService } from '../../services/utils.service';
 import { ToastService } from '../../services/toast.service';
@@ -22,6 +22,7 @@ import { Toast } from '../../models/toast.model';
       ]),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class ToastComponent {
