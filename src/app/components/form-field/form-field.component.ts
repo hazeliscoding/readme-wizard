@@ -11,6 +11,7 @@ import {
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class FormFieldComponent {
   @Input()

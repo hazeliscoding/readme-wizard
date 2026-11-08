@@ -13,6 +13,7 @@ import { UtilsService } from '../../services/utils.service';
   templateUrl: './form-checkbox.component.html',
   styleUrls: ['./form-checkbox.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class FormCheckboxComponent implements AfterViewInit {
   @Input()

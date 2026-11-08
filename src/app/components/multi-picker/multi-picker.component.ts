@@ -6,6 +6,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { UtilsService } from '../../services/utils.service';
@@ -20,6 +21,8 @@ export interface PickerItem {
   selector: 'app-multi-picker',
   templateUrl: './multi-picker.component.html',
   styleUrls: ['./multi-picker.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false
 })
 export class MultiPickerComponent implements OnInit, OnChanges {
   @Input()

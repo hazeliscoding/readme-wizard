@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, Observable, Subject } from 'rxjs';
 
@@ -53,6 +53,8 @@ import { testData } from '../../../data/test';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false
 })
 export class FormComponent implements OnInit {
   @Output()

@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class HeaderComponent {
   @Output()

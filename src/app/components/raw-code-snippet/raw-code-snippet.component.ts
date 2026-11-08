@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-raw-code-snippet',
   templateUrl: './raw-code-snippet.component.html',
   styleUrl: './raw-code-snippet.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false
 })
 export class RawCodeSnippetComponent {
   @Input() code: string = '';

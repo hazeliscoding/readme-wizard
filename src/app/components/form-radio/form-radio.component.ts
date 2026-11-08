@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   templateUrl: './form-radio.component.html',
   styleUrls: ['./form-radio.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class FormRadioComponent {
   @Input()

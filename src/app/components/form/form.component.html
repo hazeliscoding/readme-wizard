@@ -131,7 +131,7 @@
       (change)="inputChange('screenshots-url', $event.target)"
       [placeholder]="'Screenshots url'"
       [textarea]="true"
-      [value]="(screenshots$ | async)?.join('\n')"
+      [value]="$safeNavigationMigration((screenshots$ | async)?.join('\n'))"
     ></app-form-field>
   </div>
 
@@ -144,7 +144,7 @@
     #techStack
     (change)="inputChange('tech-stack', $event.target)"
     [title]="'Add Tech Stack'"
-    [value]="(stack$ | async)?.length! > 0"
+    [value]="$safeNavigationMigration((stack$ | async)?.length)! > 0"
   ></app-form-checkbox>
 
   <div [ngClass]="techStack.value ? '' : 'hidden'" class="flex flex-col">
@@ -206,7 +206,7 @@
       #contributionCheckbox
       (change)="inputChange('contribution', $event.target)"
       [title]="'Add Contribution info'"
-      [value]="(contribution$ | async)?.add"
+      [value]="$safeNavigationMigration((contribution$ | async)?.add)"
     ></app-form-checkbox>
     <app-form-field
       (change)="inputChange('contribution-guideline', $event.target)"
@@ -269,7 +269,7 @@
     #licenseCheckbox
     (change)="inputChange('license', $event.target)"
     [title]="'Add License'"
-    [value]="(license$ | async)?.type !== undefined"
+    [value]="$safeNavigationMigration((license$ | async)?.type) !== undefined"
   ></app-form-checkbox>
 
   <app-form-radio
@@ -277,7 +277,7 @@
     (change)="inputChange('licenseType', $event.target)"
     [ngClass]="{ hidden: !licenseCheckbox.value }"
     [options]="licenses"
-    [value]="(license$ | async)?.type"
+    [value]="$safeNavigationMigration((license$ | async)?.type)"
   ></app-form-radio>
 
   <app-form-field

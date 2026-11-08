@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { initFlowbite } from 'flowbite';
@@ -17,6 +17,8 @@ import { testData } from '../data/test';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false
 })
 export class AppComponent implements OnInit {
   public generatedMarkdown$: Observable<string>;
